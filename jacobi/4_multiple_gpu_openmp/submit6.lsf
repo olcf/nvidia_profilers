@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#BSUB -P GEN117
+#BSUB -W 10
+#BSUB -nnodes 1
+#BSUB -J multi_gpu_6omp
+#BSUB -o output_6omp.%J
+#BSUB -e output_6omp.%J
+
+export OMP_NUM_THREADS=6
+
+jsrun --smpiargs="none" -n1 -c6 -g6 -a1 -bpacked:6 ./run

@@ -1,0 +1,4 @@
+*.o
+redundant_MM
+run
+output*
