@@ -13,4 +13,4 @@ redundant_MM.o: redundant_MM.cu
 .PHONY: clean
 
 clean:
-	rm -f redundant_MM *.o
+	rm -f redundant_mm *.o
