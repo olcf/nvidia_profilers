@@ -3,3 +3,7 @@ redundant_mm
 run
 output*
 vec_add_cuda.*
+*.nvvp
+single_gpu*
+multiple_gpu*
+serial*

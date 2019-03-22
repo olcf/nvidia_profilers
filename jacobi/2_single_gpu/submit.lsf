@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#BSUB -P GEN117
+#BSUB -P STF007
 #BSUB -W 10
 #BSUB -nnodes 1
 #BSUB -J single_gpu
-#BSUB -o output.%J
-#BSUB -e output.%J
+#BSUB -o single_gpu.%J
+#BSUB -e single_gpu.%J
 
-jsrun --smpiargs="none" -n1 -c1 -g1 -a1 ./run
+jsrun --smpiargs="none" -n1 -c1 -g1 -a1 nvprof -s -o single_gpu.%h.${LSB_JOBID}.nvvp ./run
