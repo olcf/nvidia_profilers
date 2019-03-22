@@ -2,3 +2,4 @@
 redundant_mm
 run
 output*
+vec_add_cuda.*

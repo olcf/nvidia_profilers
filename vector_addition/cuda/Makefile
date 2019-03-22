@@ -12,3 +12,5 @@ vector_addition.o: vector_addition.cu
 clean:
 	rm -f run *.o
 
+cleanall:
+	rm -f run *.o vec_add_cuda.*
