@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#BSUB -P STF007
+#BSUB -W 10
+#BSUB -nnodes 1
+#BSUB -J mat_mul
+#BSUB -o mat_mul.%J
+#BSUB -e mat_mul.%J
+
+#jsrun -n1 -c42 -g6 -a2 -bpacked:7 nvprof -s -o mat_mul.${LSB_JOBID}.%h.%q{OMPI_COMM_WORLD_RANK}.nvvp ./redundant_mm 2048 100 | sort
+jsrun -n1 -c42 -g6 -a2 -bpacked:7 nvprof -s -o mat_mul.${LSB_JOBID}.%h.%q{OMPI_COMM_WORLD_RANK}.nvvp --context-name "MPI Rank %q{OMPI_COMM_WORLD_RANK}" --process-name "MPI Rank %q{OMPI_COMM_WORLD_RANK}" ./redundant_mm 2048 100 | sort

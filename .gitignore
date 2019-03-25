@@ -7,3 +7,5 @@ vec_add_cuda.*
 single_gpu*
 multiple_gpu*
 serial*
+redundant_MM_nodeGPUID
+mat_mul*

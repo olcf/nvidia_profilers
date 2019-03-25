@@ -4,7 +4,7 @@
 #BSUB -W 10
 #BSUB -nnodes 1
 #BSUB -J mat_mul
-#BSUB -o output.%J
-#BSUB -e output.%J
+#BSUB -o mat_mul.%J
+#BSUB -e mat_mul.%J
 
-jsrun -n1 -c42 -g6 -a2 -bpacked:7 ./redundant_mm 4098 100 | sort
+jsrun -n1 -c42 -g6 -a2 -bpacked:7 nvprof -s -o mat_mul.${LSB_JOBID}.%h.%q{OMPI_COMM_WORLD_RANK}.nvvp ./redundant_mm 2048 100 | sort
