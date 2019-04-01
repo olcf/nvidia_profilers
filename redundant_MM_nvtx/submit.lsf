@@ -3,8 +3,10 @@
 #BSUB -P STF007
 #BSUB -W 10
 #BSUB -nnodes 1
-#BSUB -J mat_mul
-#BSUB -o output.%J
-#BSUB -e output.%J
+#BSUB -J mat_mul_nvtx
+#BSUB -o mat_mul_nvtx.%J
+#BSUB -e mat_mul_nvtx.%J
 
-jsrun -n1 -c42 -g6 -a2 -bpacked:7 nvprof -o /gpfs/wolf/stf007/scratch/t4p/output_ascent3.%h.%q{OMPI_COMM_WORLD_RANK}.nvvp --context-name "MPI Rank %q{OMPI_COMM_WORLD_RANK}" --process-name "MPI Rank %q{OMPI_COMM_WORLD_RANK}" --annotate-mpi openmpi ./redundant_MM 4098 10 | sort
+#jsrun -n1 -c42 -g6 -a2 -bpacked:7 nvprof -o /gpfs/wolf/stf007/scratch/t4p/output_ascent3.%h.%q{OMPI_COMM_WORLD_RANK}.nvvp --context-name "MPI Rank %q{OMPI_COMM_WORLD_RANK}" --process-name "MPI Rank %q{OMPI_COMM_WORLD_RANK}" --annotate-mpi openmpi ./redundant_MM 4098 10 | sort
+
+jsrun -n1 -c42 -g6 -a2 -bpacked:7 nvprof -s -o mat_mul_nvtx.${LSB_JOBID}.%h.%q{OMPI_COMM_WORLD_RANK}.nvvp --context-name "MPI Rank %q{OMPI_COMM_WORLD_RANK}" --process-name "MPI Rank %q{OMPI_COMM_WORLD_RANK}" ./redundant_mm 2048 100 | sort

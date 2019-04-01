@@ -7,4 +7,6 @@
 #BSUB -o mat_mul.%J
 #BSUB -e mat_mul.%J
 
+module list
+
 jsrun -n1 -c42 -g6 -a2 -bpacked:7 nvprof -s -o mat_mul.${LSB_JOBID}.%h.%q{OMPI_COMM_WORLD_RANK}.nvvp ./redundant_mm 2048 100 | sort

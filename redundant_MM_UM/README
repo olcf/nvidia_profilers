@@ -1,0 +1,54 @@
+------------------------------------------------------------------------------------------------
+redundant_MM
+
+For each MPI rank, this program does the following:
+  * Fill 2 NxN matrices with random numbers
+  * Compute a matrix multiply on the CPU
+  * Compute a matrix multiply on the GPU (loop_count times)
+  * Compare the CPU and GPU results for consistency
+  * Output the total runtime and time spent computing on the GPUs for each rank (and max)
+    as well as the hardware thread and GPU used on a specific node
+
+Written by Tom Papatheodore (papatheodore@ornl.gov)
+------------------------------------------------------------------------------------------------
+
+
+Environment Setup
+-----------------
+The following modules must be loaded to compile AND to run this program:
+	essl
+	cuda
+
+
+Compiling
+---------
+After loading the modules mentioned above, just type `make`.
+
+
+Running
+-------
+Two command line arguments must be supplied:
+  N (matrix size)
+  loop_count (number of times cublasDgemm is called)
+
+For example, the following jsrun line will run 6 resource sets, each with 1 MPI rank, 1 physical core, and 1 GPU, with 3 resource sets per node:
+(assuming you have requested at least two nodes via LSF)
+
+  $ jsrun -n6 -c1 -g1 -a1 -r3 ./redundant_MM 2048 1000 | sort
+  (N = 2048) Max Total Time: 6.879220 Max GPU Time: 2.816899
+  Rank 000, HWThread 002, GPU 0, Node h41n09 - Total Time: 6.855115 GPU Time: 2.804994
+  Rank 001, HWThread 004, GPU 1, Node h41n09 - Total Time: 6.816647 GPU Time: 2.814934
+  Rank 002, HWThread 008, GPU 2, Node h41n09 - Total Time: 6.879220 GPU Time: 2.816899
+  Rank 003, HWThread 000, GPU 0, Node h41n10 - Total Time: 5.862273 GPU Time: 2.814339
+  Rank 004, HWThread 005, GPU 1, Node h41n10 - Total Time: 5.798143 GPU Time: 2.765094
+  Rank 005, HWThread 010, GPU 2, Node h41n10 - Total Time: 5.746687 GPU Time: 2.785626
+
+
+ADDITIONAL NOTES
+----------------
+If you want to target a common GPU from multiple MPI ranks, you need to enable MPS using the `-alloc_flags "gpumps"` LSF option.
+
+----
+TODO
+----
+* If GPU is not available to resource set (i.e. in jsrun command), the program will seg fault (This should be fixed with an in-code check).

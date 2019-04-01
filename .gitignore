@@ -1,11 +1,12 @@
 *.o
+*.nvvp
 redundant_mm
 run
 output*
 vec_add_cuda.*
-*.nvvp
 single_gpu*
 multiple_gpu*
 serial*
 redundant_MM_nodeGPUID
 mat_mul*
+mat_mul_UM*
