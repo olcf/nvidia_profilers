@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#BSUB -P STF007
+#BSUB -P GEN121
 #BSUB -W 10
 #BSUB -nnodes 1
 #BSUB -J multi_gpu_1omp

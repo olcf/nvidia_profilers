@@ -14,4 +14,3 @@ clean:
 
 cleanall:
 	rm -f run *.o multi_gpu_*
-

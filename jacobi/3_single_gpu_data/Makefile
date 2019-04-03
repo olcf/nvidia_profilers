@@ -13,5 +13,5 @@ clean:
 	rm -f run *.o
 
 cleanall:
-	rm -f *.nvvp *.prof *.err *.out
+	rm -f run *.o *.nvvp single_gpu_data.*
 
