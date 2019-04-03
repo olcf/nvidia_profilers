@@ -7,10 +7,10 @@ run: vector_addition.o
 vector_addition.o: vector_addition.cu
 	$(CUCOMP) $(CFLAGS) -c vector_addition.cu
 
-.PHONY: clean
+.PHONY: clean cleanall
 
 clean:
 	rm -f run *.o
 
 cleanall:
-	rm -f run *.o vec_add_cuda.*
+	rm -f run *.o vec_add_cuda.* *.nvvp
