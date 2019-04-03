@@ -10,3 +10,4 @@ serial*
 redundant_MM_nodeGPUID
 mat_mul*
 mat_mul_UM*
+multi_gpu_*
