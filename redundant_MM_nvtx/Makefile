@@ -10,7 +10,10 @@ redundant_mm: redundant_MM.o
 redundant_MM.o: redundant_MM.cu
 	$(CUCOMP) $(CUFLAGS) $(INCLUDES) -c redundant_MM.cu
 
-.PHONY: clean
+.PHONY: clean cleanall
 
 clean:
 	rm -f redundant_mm *.o
+
+cleanall:
+	rm -f redundant_mm *.o *.nvvp mat_mul*

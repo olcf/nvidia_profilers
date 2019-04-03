@@ -16,4 +16,4 @@ clean:
 	rm -f redundant_mm *.o
 
 cleanall:
-	rm -f redundant_mm *.o mat_mul*
+	rm -f redundant_mm *.o mat_mul* *.nvvp

@@ -47,8 +47,3 @@ For example, the following jsrun line will run 6 resource sets, each with 1 MPI 
 ADDITIONAL NOTES
 ----------------
 If you want to target a common GPU from multiple MPI ranks, you need to enable MPS using the `-alloc_flags "gpumps"` LSF option.
-
-----
-TODO
-----
-* If GPU is not available to resource set (i.e. in jsrun command), the program will seg fault (This should be fixed with an in-code check).
