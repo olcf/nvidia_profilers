@@ -7,4 +7,4 @@
 #BSUB -o vec_add_cuda.%J
 #BSUB -e vec_add_cuda.%J
 
-jsrun -n1 -c1 -g1 -a1 nvprof -s -o vec_add_cuda.%h.${LSB_JOBID}.nvvp ./run
+jsrun -n1 -c1 -g1 -a1 nvprof -s -o vec_add_cuda.${LSB_JOBID}.%h.nvvp ./run

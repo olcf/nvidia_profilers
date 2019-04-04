@@ -9,4 +9,4 @@
 
 export OMP_NUM_THREADS=6
 
-jsrun --smpiargs="none" -n1 -c6 -g6 -a1 -bpacked:6 nvprof -s -o multi_gpu_6omp.%h.${LSB_JOBID}.nvvp ./run
+jsrun --smpiargs="none" -n1 -c6 -g6 -a1 -bpacked:6 nvprof -s -o multi_gpu_6omp.${LSB_JOBID}.%h.nvvp ./run

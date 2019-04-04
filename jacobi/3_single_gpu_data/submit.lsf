@@ -7,4 +7,4 @@
 #BSUB -o single_gpu_data.%J
 #BSUB -e single_gpu_data.%J
 
-jsrun --smpiargs="none" -n1 -c1 -g1 -a1 nvprof -s -o single_gpu_data.%h.${LSB_JOBID}.nvvp ./run
+jsrun --smpiargs="none" -n1 -c1 -g1 -a1 nvprof -s -o single_gpu_data.${LSB_JOBID}.%h.nvvp ./run
